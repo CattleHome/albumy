@@ -14,6 +14,7 @@ from albumy.blueprints.main import main_bp
 from albumy.extensions import bootstrap, db, mail, moment
 from albumy.settings import config
 
+print("adad")
 
 def create_app(config_name=None):
     if config_name is None:

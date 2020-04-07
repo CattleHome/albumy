@@ -1,0 +1,213 @@
+{% extends 'base.html' %}
+
+{% block title %}Explore{% endblock %}
+{% block content %}
+
+        <!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+    <!-- 引入jquery.js -->
+<script src="https://cdn.bootcss.com/echarts/4.1.0.rc2/echarts.min.js"></script>
+
+    <div class="dd" style="width: 1200px;height: 1000px">
+        <div id="main1"  style="width: 500px;height:400px;float: left"></div>
+        <div id="main2"  style="width: 500px;height: 400px;float: right"></div>
+        <div id="main3"  style="width: 500px;height: 400px;float: left"></div>
+ </div>
+
+    <script>
+    // 基于准备好的dom，初始化echarts实例
+    var myChart1 = echarts.init(document.getElementById('main1'));
+
+    //建立axjx所需的json数据
+    var app={
+        xdata:[],
+        ydata:[]
+    };
+
+    //发送ajax请求
+    $(document).ready(function () {
+   getData1();
+});
+
+//设计画图
+function getData1() {
+     $.ajax({
+     //渲染的是127.0.0.1/test 下的json数据
+        url:'/data',
+        data:{},
+        type:'POST',
+        async:false,
+        dataType:'json',
+
+        success:function(data) {
+            app.xdata = data.xdata;
+            app.ydata = data.ydata;
+
+            console.log(app.xdata);
+            console.log(app.ydata);
+
+            myChart1.setOption({
+                title: {
+                    text: '电影评分总数'
+                },
+                tooltip: {},
+                legend: {
+                    data:['评分']
+                },
+                xAxis: {
+                    data: app.xdata
+                },
+                yAxis: {},
+                //
+                series: [{
+                    name: '评分',
+                    type: 'bar',
+                    data: app.ydata
+                }]
+            })
+        },
+         error:function (msg) {
+            console.log(msg);
+            alert('系统发生错误');
+
+
+        }
+    })
+
+}
+
+
+    </script>
+
+    <script >
+    var myChart2 = echarts.init(document.getElementById('main2'));
+
+    //建立axjx所需的json数据
+    var app={
+        xdata:[],
+        ydata:[]
+    };
+
+    //发送ajax请求
+    $(document).ready(function () {
+   getData2();
+});
+
+//设计画图
+function getData2() {
+     $.ajax({
+     //渲染的是127.0.0.1/test 下的json数据
+        url:'/data1',
+        data:{},
+        type:'POST',
+        async:false,
+        dataType:'json',
+
+        success:function(data) {
+            app.xdata = data.xdata;
+            app.ydata = data.ydata;
+
+            console.log(app.xdata);
+            console.log(app.ydata);
+
+            myChart2.setOption({
+                title: {
+                    text: '电影评分总数'
+                },
+                tooltip: {},
+                legend: {
+                    data:['评分']
+                },
+                xAxis: {
+                    data: app.xdata
+                },
+                yAxis: {},
+                //
+                series: [{
+                    name: '评分',
+                    type: 'bar',
+                    data: app.ydata
+                }]
+            })
+        },
+         error:function (msg) {
+            console.log(msg);
+            alert('系统发生错误');
+
+
+        }
+    })
+
+}
+
+    </script>
+
+    <script >
+    var myChart3 = echarts.init(document.getElementById('main3'));
+
+    //建立axjx所需的json数据
+    var app={
+        xdata:[],
+        ydata:[]
+    };
+
+    //发送ajax请求
+    $(document).ready(function () {
+   getData3();
+});
+
+//设计画图
+function getData3() {
+     $.ajax({
+     //渲染的是127.0.0.1/test 下的json数据
+        url:'/data1',
+        data:{},
+        type:'POST',
+        async:false,
+        dataType:'json',
+
+        success:function(data) {
+            app.xdata = data.xdata;
+            app.ydata = data.ydata;
+
+            console.log(app.xdata);
+            console.log(app.ydata);
+
+            myChart3.setOption({
+                title: {
+                    text: '电影评分总数'
+                },
+                tooltip: {},
+                legend: {
+                    data:['评分']
+                },
+                xAxis: {
+                    data: app.xdata
+                },
+                yAxis: {},
+                //
+                series: [{
+                    name: '评分',
+                    type: 'bar',
+                    data: app.ydata
+                }]
+            })
+        },
+         error:function (msg) {
+            console.log(msg);
+            alert('系统发生错误');
+
+
+        }
+    })
+
+}
+
+    </script>
+
+
+
+{% endblock %}

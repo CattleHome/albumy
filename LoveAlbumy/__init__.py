@@ -1,26 +1,21 @@
 # -*- coding: utf-8 -*-
-"""
-    :author: Grey Li (李辉)
-    :url: http://greyli.com
-    :copyright: © 2018 Grey Li <withlihui@gmail.com>
-    :license: MIT, see LICENSE for more details.
-"""
+
 import os
 
 import click
 from flask import Flask, render_template
 
-from albumy.blueprints.main import main_bp
-from albumy.extensions import bootstrap, db, mail, moment
-from albumy.settings import config
+from LoveAlbumy.blueprints.main import main_bp
+from LoveAlbumy.blueprints.data import data_bp
+from LoveAlbumy.extensions import bootstrap, db, mail, moment
+from LoveAlbumy.settings import config
 
-print("adad")
 
 def create_app(config_name=None):
     if config_name is None:
         config_name = os.getenv('FLASK_CONFIG', 'development')
 
-    app = Flask('albumy')
+    app = Flask('LoveAlbumy')
 
     app.config.from_object(config[config_name])
 
@@ -43,6 +38,7 @@ def register_extensions(app):
 
 def register_blueprints(app):
     app.register_blueprint(main_bp)
+    app.register_blueprint(data_bp)
 
 
 def register_shell_context(app):
@@ -101,3 +97,7 @@ def register_commands(app):
     def forge():
         """Generate fake data."""
         pass
+
+if __name__ == '__main__':
+    app=create_app()
+    app.run(debug=True,host='127.0.0.3')

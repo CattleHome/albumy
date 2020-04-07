@@ -21,6 +21,7 @@ from LoveAlbumy.extensions import bootstrap, db, login_manager, mail, dropzone, 
 from LoveAlbumy.models import Role, User, Photo, Tag, Follow, Notification, Comment, Collect, Permission
 from LoveAlbumy.settings import config
 
+print("测试")
 
 def create_app(config_name=None):
     if config_name is None:

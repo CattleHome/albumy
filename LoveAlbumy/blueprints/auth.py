@@ -8,12 +8,12 @@
 from flask import render_template, flash, redirect, url_for, Blueprint
 from flask_login import login_user, logout_user, login_required, current_user, login_fresh, confirm_login
 
-from albumy.emails import send_confirm_email, send_reset_password_email
-from albumy.extensions import db
-from albumy.forms.auth import LoginForm, RegisterForm, ForgetPasswordForm, ResetPasswordForm
-from albumy.models import User
-from albumy.settings import Operations
-from albumy.utils import generate_token, validate_token, redirect_back
+from LoveAlbumy.emails import send_confirm_email, send_reset_password_email
+from LoveAlbumy.extensions import db
+from LoveAlbumy.forms.auth import LoginForm, RegisterForm, ForgetPasswordForm, ResetPasswordForm
+from LoveAlbumy.models import User
+from LoveAlbumy.settings import Operations
+from LoveAlbumy.utils import generate_token, validate_token, redirect_back
 
 auth_bp = Blueprint('auth', __name__)
 

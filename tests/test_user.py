@@ -9,9 +9,9 @@ import io
 
 from flask import url_for
 
-from albumy.models import User, Photo
-from albumy.settings import Operations
-from albumy.utils import generate_token
+from LoveAlbumy.models import User, Photo
+from LoveAlbumy.settings import Operations
+from LoveAlbumy.utils import generate_token
 from tests.base import BaseTestCase
 
 
